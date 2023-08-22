@@ -40,7 +40,7 @@ class PositionalEmbedding(nn.Module):
     实现PE功能，尝试过参数学习版本的PE，但是最终选择了正弦版本
     因为它可以允许模型推断出比训练期间遇到的序列长度更长的序列长度
     """
-    def __init__(self, d_model, dropout, max_len=512):
+    def __init__(self, d_model, dropout=0.1, max_len=512):
         super(PositionalEmbedding, self).__init__()
         self.dropout = nn.Dropout(p=dropout)
 

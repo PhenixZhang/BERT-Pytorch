@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-from .bert import BERT
+from model.bert import BERT
 
 class BERTLM(nn.Module):
     """
@@ -18,7 +18,7 @@ class BERTLM(nn.Module):
 
         super(BERTLM, self).__init__()
         self.bert = bert
-        self.next_sentence = NextSentencePrediction(self.bert.hidden, vocab_size)
+        self.next_sentence = NextSentencePrediction(self.bert.hidden)
         self.mask_lm = MaskedLanguageModel(self.bert.hidden, vocab_size)
 
     def forward(self, x, segment_model):

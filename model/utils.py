@@ -40,7 +40,7 @@ class PositionwiseFeedForward(nn.Module):
         self.w_1 = nn.Linear(d_model, d_ff)
         self.w_2 = nn.Linear(d_ff, d_model)
         self.dropout = nn.Dropout(dropout)
-        self.activation = GELU()
+        self.activation = GELU() # torch.nn.GELU()
 
     def forward(self, x):
         return self.w_2(self.dropout(self.activation(self.w_1(x))))
@@ -48,7 +48,7 @@ class PositionwiseFeedForward(nn.Module):
 
 class GELU(nn.Module):
     """
-    论文3.4部分，注明BERT使用GELU激活函数替换RELU
+    论文3.4部分，注明BERT使用GELU激活函数替换RELU，torch当前已经支持GELU，torch.nn.GELU
     GELU函数优点：
         1)处理负数时不会像ReLU一样将输入裁剪到0，并且导数更为光滑，从而减少了训练过程中出现的梯度消失问题
         2)GELU函数在激活函数的非线性变换中引入了类似于sigmoid函数的变换，这使得GELU函数的输出可以落在一个更广的范围内，有助于加速模型的收敛速度
