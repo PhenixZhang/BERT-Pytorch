@@ -1,0 +1,10 @@
+# this is a .gitignore file for unnecessary files.
+bert.model*
+
+model/__pycache__*
+
+trainer/__pycahce__
+
+dataset/__pycache__
+
+test.vocab*
